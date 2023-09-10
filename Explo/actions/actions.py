@@ -6,7 +6,7 @@ from swiplserver import PrologMQI
 import time
 
 
-consult_path = "consult('C:/Users/logue/OneDrive/Escritorio/Explo/knowledge_db.pl')"
+consult_path = "consult('C:/Users/logue/OneDrive/Escritorio/ChatBot/Explo/knowledge_db.pl')"
 
 class TopGamesQuery(Action):
     def name(self) -> Text:

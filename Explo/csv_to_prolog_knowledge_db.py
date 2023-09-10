@@ -93,7 +93,7 @@ def update_kdb(rows):
         else:
             db.write(f"platform(\"{a.name}\",\"{a.platform}\").\n")
 
-    gens = open("C:/Users/logue/OneDrive/Escritorio/Explo/data/genres.txt", "w")
+    gens = open("C:/Users/logue/OneDrive/Escritorio/ChatBot/Explo/data/genres.txt", "w")
     for gen in genre:
         gens.write(f"{gen}\n")
     gens.close()
@@ -101,7 +101,7 @@ def update_kdb(rows):
 
 
         # Read the file with genres
-    with open("C:/Users/logue/OneDrive/Escritorio/Explo/data/genres.txt", 'r') as infile:
+    with open("C:/Users/logue/OneDrive/Escritorio/ChatBot/Explo/data/genres.txt", 'r') as infile:
         lines = infile.readlines()
 
     # Create a set to store unique genres
@@ -113,7 +113,7 @@ def update_kdb(rows):
         unique_genres.update(genres)
 
     # Write the unique genres to a new file
-    with open("C:/Users/logue/OneDrive/Escritorio/Explo/data/genres.txt", 'w') as outfile:
+    with open("C:/Users/logue/OneDrive/Escritorio/ChatBot/Explo/data/genres.txt", 'w') as outfile:
         for genre in unique_genres:
             genre = genre.replace("'", "")
             outfile.write(f"- {genre}\n")
@@ -157,7 +157,7 @@ def update_kdb(rows):
             else:
                 file.write(line)
     #reordeno
-    subprocess.run("sort knowledge_db.pl /o knowledge_db.pl", cwd="C:/Users/logue/OneDrive/Escritorio/Explo")
+    subprocess.run("sort knowledge_db.pl /o knowledge_db.pl", cwd="C:/Users/logue/OneDrive/Escritorio/ChatBot/Explo")
 
 update_kdb(rows)
 #update_gdb(rows)

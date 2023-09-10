@@ -9,7 +9,7 @@ from sklearn import tree
 warnings.filterwarnings("ignore", category=UserWarning)
 #filename = "C:/Users/logue/OneDrive/Escritorio/Explo/games-data.csv"
 
-df = pd.read_csv("C:/Users/logue/OneDrive/Escritorio/Explo/decission_tree/train_data.csv")
+df = pd.read_csv("C:/Users/logue/OneDrive/Escritorio/ChatBot/Explo/decission_tree/train_data.csv")
 print(df.head())
 
 
