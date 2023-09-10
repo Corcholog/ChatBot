@@ -1,0 +1,54 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - start
+  - top_games
+  - top_games_genre
+
+entities:
+  - genre_type
+
+slots:
+  genre_typ:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type : from_entity
+      entity: genre_type
+
+responses:
+
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "D:/Cosas backup 2/descargas/makeitmeme_wWcDd.jpeg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "Hello Nigga!"
+  
+
+actions:
+  - top_games_query
+  - top_games_by_genre
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

@@ -1,0 +1,1 @@
+sort knowledge_db.pl /o knowledge_db.pl

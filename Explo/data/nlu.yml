@@ -1,0 +1,293 @@
+version: "3.1"
+
+nlu:
+
+- intent: top_games_genre
+  examples: |
+    - show me the top games of [Strategy](genre_type)
+    - which are the best games of [Action](genre_type)
+    - show me the top games of [Action](genre_type)
+    - which are the best games of [Strategy](genre_type)
+    - which are the top games of [Rhythm](genre_type)
+    - which are the best games of [3D](genre_type)
+    - show me the top games of [Puzzle](genre_type)
+    - show me the best games of [2D](genre_type)
+    - show me the top games of [DemolitionDerby](genre_type)
+    - show me the top games of [Surfing](genre_type)    
+    - show me the top games of [Artillery](genre_type)  
+    - show me the top games of [Mission-based](genre_type)  
+    - show me the best games of [Board/CardGame](genre_type)  
+    - show me the top games of [Motorcycle](genre_type)  
+    - show me the top games of [WWII](genre_type)  
+    - show me the best games of [Role-Playing](genre_type)  
+    
+
+- lookup: genre_type
+  examples: |
+    - Strategy
+    - Real-Time
+    - Vertical
+    - Rhythm
+    - Puzzle
+    - CarCombat
+    - Drag
+    - DemolitionDerby
+    - Sim
+    - Static
+    - Horizontal
+    - CityBuilding
+    - Management
+    - Rally/Offroad
+    - Civilian
+    - 3D
+    - Dancing
+    - BoardGames
+    - Submarine
+    - Linear
+    - Artillery
+    - Noinfo
+    - Surfing
+    - Board/CardGame
+    - Helicopter
+    - Snow/Water
+    - Ship
+    - Modern
+    - Street
+    - Sports
+    - Edutainment
+    - PC-styleRPG
+    - Beat-Em-Up
+    - Ski/Snowboard
+    - Truck
+    - Racing
+    - Tycoon
+    - Console-styleRPG
+    - Business/Tycoon
+    - Baseball
+    - Basketball
+    - Text
+    - Golf
+    - Logic
+    - VirtualLife
+    - Pinball
+    - Nature
+    - Shooter
+    - Bowling
+    - MOBA
+    - Roguelike
+    - 2D
+    - Party
+    - Pet
+    - Tactical
+    - CardBattle
+    - Motocross
+    - Rugby
+    - WWI
+    - Mission-based
+    - Boxing
+    - Fishing
+    - Videos
+    - Gambling
+    - LightGun
+    - Football
+    - Combat
+    - Sci-Fi
+    - Space
+    - ActionRPG
+    - Tank
+    - ModernJet
+    - Biking
+    - Horror
+    - SmallSpaceship
+    - Parlor
+    - Western-Style
+    - Alternative
+    - Skating
+    - Tactics
+    - Scrolling
+    - Motorcycle
+    - Soccer
+    - Command
+    - VisualNovel
+    - StockCar
+    - Music
+    - On-foot
+    - Skate/Skateboard
+    - Historic
+    - Matching
+    - LargeSpaceship
+    - IceHockey
+    - Boxing/MartialArts
+    - Individual
+    - Action
+    - Billiards
+    - Automobile
+    - 4X
+    - Team
+    - Simulation
+    - General
+    - Marine
+    - CivilianPlane
+    - GT/Street
+    - Other
+    - Shoot-Em-Up
+    - Point-and-Click
+    - Virtual
+    - Stacking
+    - Military
+    - Skateboarding
+    - WWII
+    - Athletics
+    - Japanese-Style
+    - Train
+    - Hunting
+    - Vehicle
+    - Cricket
+    - Compilation
+    - OldJet
+    - Adventure
+    - Wakeboarding
+    - First-Person
+    - Exercise/Fitness
+    - Top-Down
+    - Arcade
+    - MassivelyMultiplayer
+    - Skiing
+    - Turn-Based
+    - Platformer
+    - HorseRacing
+    - Fighting
+    - Rail
+    - Fantasy
+    - Application
+    - Open-World
+    - Wargame
+    - Tennis
+    - Trainer
+    - OlympicSports
+    - Flight
+    - FormulaOne
+    - Career
+    - FuturisticJet
+    - Kart
+    - Futuristic
+    - Wrestling
+    - FuturisticSub
+    - Survival
+    - InteractiveMovie
+    - Party/Minigame
+    - Mech
+    - Miscellaneous
+    - Defense
+    - Sandbox
+    - Breeding/Constructing
+    - HiddenObject
+    - Driving
+    - MusicMaker
+    - Third-Person
+    - Government
+    - Trivia/GameShow
+    - MassivelyMultiplayerOnline
+    - Surf/Wakeboard
+    - Role-Playing
+    - Traditional
+    - Snowboarding
+    - Volleyball
+
+- intent: top_games
+  examples: |
+    - show me the top 10 games
+    - which are the top 10 games?
+    - give me the top 10 games
+    - give me top games
+    - show me top games
+    - which are the better games?
+
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
