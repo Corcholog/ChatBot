@@ -1,13 +1,18 @@
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
+import requests
+from bs4 import BeautifulSoup
 
-steamSearch = "https://store.steampowered.com/search/?term="
+def get_game_link(game_name) -> str:
+    game_name = game_name.lower()
+    
+    #pongo en formato para link de steam ejemplo: "https://store.steampowered.com/search/?term=god+of+war", lowercase con + en lugar de espacios
+    #quito caracteres no alfanumericos
+    game_name = game_name.replace(" ", "+")
 
-def search(gameName):
-    gameName = gameName.replace(" ", "+")
-    strToSearch = "god+of+war"
-    driver = webdriver.Firefox()
-    driver.get(f"{strToSearch}")
-    elem = driver.find_element(ByName, )
-search("god of war")
+    url = "https://store.steampowered.com/search/?term=" + game_name
+
+    html_text = requests.get(url).text
+    soup = BeautifulSoup(html_text, 'html.parser')
+    link = soup.find("a", {"class": "search_result_row ds_collapse_flag"}).get("href")
+    print(link)
+    return link
+

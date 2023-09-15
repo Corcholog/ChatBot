@@ -11,12 +11,21 @@ intents:
   - start
   - top_games
   - top_games_genre
+  - get_game_link
 
 entities:
   - genre_type
+  - game_name
 
 slots:
-  genre_typ:
+  game_nameS:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type : from_entity
+      entity: game_name
+  
+  genre_typS:
     type: text
     influence_conversation: true
     mappings:
@@ -30,7 +39,6 @@ responses:
 
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
-    image: "D:/Cosas backup 2/descargas/makeitmeme_wWcDd.jpeg"
 
   utter_did_that_help:
   - text: "Did that help you?"
@@ -48,6 +56,7 @@ responses:
 actions:
   - top_games_query
   - top_games_by_genre
+  - get_link
 
 session_config:
   session_expiration_time: 60

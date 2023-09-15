@@ -3,10 +3,25 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SessionStarted, ActionExecuted
 from swiplserver import PrologMQI
+from bs4 import BeautifulSoup
+import requests
 import time
-
+import webscrapp
+import re
 
 consult_path = "consult('C:/Users/logue/OneDrive/Escritorio/ChatBot/Explo/knowledge_db.pl')"
+
+class getGameLink(Action):
+    def name(self) -> Text:
+        return "get_link"
+    def run(self, dispatcher: CollectingDispatcher,
+             tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        game_to_search = next(tracker.get_latest_entity_values("game_name"), None)
+
+        url = webscrapp.get_game_link(game_to_search)
+        
+        dispatcher.utter_message(text=f"The link for: {game_to_search} is {url}")
+        
 
 class TopGamesQuery(Action):
     def name(self) -> Text:

@@ -21,3 +21,8 @@ rules:
   steps:
   - intent: top_games_genre
   - action: top_games_by_genre
+
+- rule: Get the link from a game
+  steps:
+  - intent: get_game_link
+  - action: get_link
