@@ -29,4 +29,31 @@ def get_game_synopsis(game_name_og) -> str:
         return synopsis
     return url
 
+def esp_news() -> list:
+    url = "https://www.3djuegos.com/noticias"
 
+    if url is not None:
+        html_text = requests.get(url).text
+        soup = BeautifulSoup(html_text, 'html.parser')
+        articles = soup.find_all("article", {"class" : "m-river-item-post"})
+        news = []
+        for post in articles:
+            news.append(post.find("h2",{"class": "m-river-item-post__title"}).get_text().strip())
+        return news
+    return url
+
+def eng_news() -> str:
+    url = "https://www.thegamer.com/category/game-news/"
+
+    if url is not None:
+        html_text = requests.get(url).text
+        soup = BeautifulSoup(html_text, 'html.parser')
+        aux = soup.find_all("div", {"class" : "display-card article large"})
+        aux2 = soup.find_all("div", {"class" : "display-card article small"})
+        news = []
+        for art in aux:
+            news.append(art.find("h5", {"class": "display-card-title"}).get_text().strip())
+        for art2 in aux2:
+            news.append(art2.find("h5", {"class": "display-card-title"}).get_text().strip())
+        return news
+    return url

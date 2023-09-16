@@ -11,6 +11,24 @@ import re
 
 consult_path = "consult('C:/Users/logue/OneDrive/Escritorio/ChatBot/Explo/knowledge_db.pl')"
 
+class GetNews(Action):
+    def name(self) -> Text:
+        return "get_news"
+    def run(self, dispatcher: CollectingDispatcher,
+             tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        news = webscrapp.eng_news()
+        if (len(news) == 0) or (news is None):
+            news = webscrapp.esp_news()
+        if (len(news) > 0):
+            n = 1
+            for new in news:
+                dispatcher.utter_message(text=f"{n}. {new}")
+                dispatcher.utter_message(text="\n")
+                n = n + 1
+        else:
+            dispatcher.utter_message(text=f"I can't find the news. Server is probably over maintenance.")
+
 class GetSynopsis(Action):
     def name(self) -> Text:
         return "get_synopsis"
@@ -44,8 +62,7 @@ class GetGameLink(Action):
         else:
             dispatcher.utter_message(response="utter_there_is_no_link")
 
-
-class TopGamesQuery(Action):
+class TopGames(Action):
     def name(self) -> Text:
         return "top_games_query"
     def run(self, dispatcher: CollectingDispatcher,
@@ -54,7 +71,7 @@ class TopGamesQuery(Action):
         with PrologMQI(port=8000) as mqi:
             with mqi.create_thread() as prolog_thread:
                 prolog_thread.query(consult_path) 
-                N = 10 # proximamente será un input obtenido del tracker ig
+                N = 10
                 response = prolog_thread.query(f"top_10_ranking(Top10, {N})")
                 dispatcher.utter_message(text=f"The top 10 games by score are:")
                 dispatcher.utter_message(text="\n")
@@ -72,7 +89,7 @@ class TopGamesQuery(Action):
 
         return []
 
-class TopGamesByGenre(Action): # tengo q controlar que si el resultado es [] me avise q no hay de tal genero.
+class TopGamesByGenre(Action): 
     def name(self) -> Text:
         return "top_games_by_genre"
     def run(self, dispatcher: CollectingDispatcher,
@@ -94,36 +111,3 @@ class TopGamesByGenre(Action): # tengo q controlar que si el resultado es [] me 
 
         return []
 
-""" ES RE DIFICIL ESTO XD
-class TopGamesByDeveloper(Action):
-    def name(self) -> Text:
-        return "top_games_by_dev"
-    def run(self, dispatcher: CollectingDispatcher,
-             tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        with PrologMQI(port=8000) as mqi:
-            with mqi.create_thread() as prolog_thread:
-                prolog_thread.query(consult_path)
-                dev = "BethesdaGameStudios" # proximamente será un input obtenido del tracker ig 
-                response = prolog_thread.query(f"top_10_dev(Top10, {dev})")
-                dispatcher.utter_message(text=f"The top 10 games of {dev} are:")
-                dispatcher.utter_message(text="\n")
-
-                for entry in response:
-                    for game_info in entry['Top10']:
-                        game_name, score = game_info
-                        formatted_entry = f"{game_name}, score: {score}"
-                        dispatcher.utter_message(text=f"{formatted_entry}")
-                        dispatcher.utter_message(text="\n")
-
-        return []
-
-class ActionSessionStart(Action):
-    def name(self) -> Text:
-        return "action_session_start"
-
-    async def run(
-      self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]
-    ) -> List[Dict[Text, Any]]:
-        dispatcher.utter_message(response="utter_iamabot")
-        return [SessionStarted(), ActionExecuted("action_listen")]
-"""

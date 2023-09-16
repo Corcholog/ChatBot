@@ -12173,20 +12173,26 @@ nlu:
     - am I talking to a bot?
     - am I talking to a human?
 
+- intent: game_news
+  examples: |
+    - tell me the news
+    - can you give me gaming news?
+    - give me gaming news
+
 - intent: about
   examples: |
-  - Who you are?
-  - Tell me about yourself.
-  - Introduce yourself.
-  - Are you a bot?
-  - What's your name?
+    - Who you are?
+    - Tell me about yourself.
+    - Introduce yourself.
+    - Are you a bot?
+    - What's your name?
 
 - intent: functionalities
   examples: |
-  - What can you do?
-  - Tell me your capabilities.
-  - What are your functions?
-  - How can you assist me?
-  - What services do you offer?
-  - How can you help?
-  - What's your purpose?
+    - What can you do?
+    - Tell me your capabilities.
+    - What are your functions?
+    - How can you assist me?
+    - What services do you offer?
+    - How can you help?
+    - What's your purpose?

@@ -24,6 +24,11 @@ stories:
   - intent: get_game_synopsis
   - action: get_synopsis
 
+- story: asking for news
+  steps:
+  - intent: game_news
+  - action: get_news
+
 - story: said thanks
   steps:
   - intent: thankful

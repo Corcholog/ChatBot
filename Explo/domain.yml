@@ -7,12 +7,12 @@ intents:
   - deny
   - mood_great
   - mood_unhappy
-  - bot_challenge
   - start
   - top_games
   - top_games_genre
   - get_game_link
   - get_game_synopsis
+  - game_news
   - thankful
 
 entities:
@@ -56,11 +56,7 @@ responses:
   - text: "Just wait a sec"
   - text: "Give me a sec"
 
-  utter_who_you_are:
-  - text: ""
 
-  utter_functionalities:
-  - text: ""
 
   utter_thank_you:
   - text: "You're welcome!"
@@ -101,6 +97,7 @@ actions:
   - top_games_by_genre
   - get_link
   - get_synopsis
+  - get_news
 
 session_config:
   session_expiration_time: 60
