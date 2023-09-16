@@ -11,18 +11,4 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
-
-- rule: Show top N games
-  steps:
-  - intent: top_games
-  - action: top_games_query
-
-- rule: Show top games by genre
-  steps:
-  - intent: top_games_genre
-  - action: top_games_by_genre
-
-- rule: Get the link from a game
-  steps:
-  - intent: get_game_link
-  - action: get_link
+  

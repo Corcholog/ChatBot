@@ -2,12 +2,120 @@ version: "3.1"
 
 nlu:
 
+- intent: thankful
+  examples: |
+    - thanks
+    - thank you
+    - thanks a lot
+    - thanks so much
+    - appreciate it
+
+- intent: get_game_synopsis
+  examples: |
+    - What is [The Legend of Zelda: Ocarina of Time](game_name) about?
+    - Can you tell me the story of [Red Dead Redemption 2](game_name)?
+    - I'd like to know the plot of [The Witcher 3](game_name). Can you help?
+    - What's the main storyline of [Resident Evil 4](game_name)?
+    - Can you explain the premise of [BioShock](game_name)?
+    - I'm curious about the narrative of [Assassin's Creed Valhalla](game_name). What is it?
+    - What happens in [Final Fantasy VII](game_name)?
+    - Tell me the synopsis of [Dark Souls III](game_name).
+    - I've heard about [Dark Souls II](game_name). What's its story?
+    - What's the plot behind [The Elder Scrolls V: Skyrim](game_name)?
+    - Can you describe the storyline of [Doom Eternal](game_name)?
+    - I'm interested in [Sekiro: Shadows Die Twice](game_name). What's it about?
+    - What events unfold in [God of War](game_name)?
+    - Can you give me a brief about [Detroit: Become Human](game_name)?
+    - I'd like to understand the narrative of [Assassin's Creed Odyssey](game_name). Can you explain?
+
 
 - intent: get_game_link
   examples: |
     - give me the link for steam from the game [The Legend of Zelda: Ocarina of Time](game_name)
     - give me the link to buy the game [Red Dead Redemption 2](game_name)
-    - give me the link of the game [Half-Life 2](game_name)
+    - Give me the link of the game [Half-Life 2](game_name)
+    - Can you find the link for [The Witcher 3](game_name)?
+    - I want the Steam link for [Red Dead Redemption 2](game_name)
+    - Show me the store page for [Resident Evil 4](game_name)
+    - Where can I buy [BioShock](game_name) on Steam?
+    - Get me the Steam URL for [Assassin's Creed Valhalla](game_name).
+    - Can you find the link for [Final Fantasy VII](game_name)?
+    - I want the Steam link for [Dark Souls III](game_name).
+    - Show me the store page for [Overwatch](game_name).
+    - Where can I buy [Fortnite](game_name) on Steam?
+    - Get me the Steam URL for [The Elder Scrolls V: Skyrim](game_name).
+    - How can I purchase [Doom Eternal](game_name)?
+    - I'd like to see the page for [Mass Effect: Legendary Edition](game_name).
+    - Can you fetch the link for [Sekiro: Shadows Die Twice](game_name)?
+    - I'm interested in [Star Wars Jedi: Fallen Order](game_name). Can you help?
+    - Show me where to buy [The Last of Us Part II](game_name).
+    - I need the link for [Ghost of Tsushima](game_name).
+    - Where can I find [Death Stranding](game_name) on Steam?
+    - Can you show me [Resident Evil Village](game_name)?
+    - I'm looking for [God of War](game_name).
+    - How about [Horizon Zero Dawn](game_name)? Where can I get it?
+    - I'd like to purchase [Control](game_name).
+    - Can you fetch [Bloodborne](game_name) for me?
+    - I want to see [Spider-Man: Miles Morales](game_name).
+    - How can I buy [Uncharted 4: A Thief's End](game_name)?
+    - Show me the page for [Days Gone](game_name).
+    - I'm interested in [Detroit: Become Human](game_name).
+    - Can you find [The Division 2](game_name) for me?
+    - I'd like the link for [Far Cry 5](game_name).
+    - Where can I get [Monster Hunter: World](game_name)?
+    - I want to buy [Red Dead Online](game_name).
+    - Can you show me [Assassin's Creed Odyssey](game_name)?
+    - I'm looking for [Fallout 76](game_name).
+    - How about [Battlefield V](game_name)?
+    - I'd like to see [Anthem](game_name).
+    - Can you find [Metro Exodus](game_name) for me?
+    - Show me where to get [Shadow of the Tomb Raider](game_name).
+    - I'm interested in [Hitman 2](game_name).
+    - Can you fetch the link for [Just Cause 4](game_name)?
+    - I want to see [Mortal Kombat 11](game_name).
+    - How can I purchase [Borderlands 3](game_name)?
+    - I'd like the link for [Biomutant](game_name).
+    - Can you find [Cyber Shadow](game_name) for me?
+    - I'm looking for [Hollow Knight: Silksong](game_name).
+    - Show me [The Legend of Zelda: Breath of the Wild](game_name).
+    - I want to buy [Super Mario Odyssey](game_name).
+    - Can you show me [Splatoon 2](game_name)?
+    - I'm interested in [Mario Kart 8 Deluxe](game_name).
+    - How about [Super Smash Bros. Ultimate](game_name)?
+    - I'd like to see [Luigi's Mansion 3](game_name).
+    - Can you find [Fire Emblem: Three Houses](game_name) for me?
+    - I want the link for [Pokemon Sword and Shield](game_name).
+    - Show me where to get [Animal Crossing: New Horizons](game_name).
+    - I'm looking for [Bayonetta 3](game_name).
+    - Can you fetch the link for [Metroid Prime 4](game_name)?
+    - I want to see [Xenoblade Chronicles 2](game_name).
+    - How can I buy [Super Mario Maker 2](game_name)?
+    - I'd like the link for [Kirby Star Allies](game_name).
+    - Can you find [Donkey Kong Country: Tropical Freeze](game_name) for me?
+    - I'm interested in [Mario Tennis Aces](game_name).
+    - Show me [Yoshi's Crafted World](game_name).
+    - I want to buy [The Legend of Zelda: Link's Awakening](game_name).
+    - Can you show me [Mario & Sonic at the Olympic Games](game_name)?
+    - I'm looking for [Astral Chain](game_name).
+    - How about [Ring Fit Adventure](game_name)?
+    - I'd like to see [Super Mario 3D World + Bowser's Fury](game_name).
+    - Can you find [Pikmin 3 Deluxe](game_name) for me?
+    - I want the link for [Hyrule Warriors: Age of Calamity](game_name).
+    - Show me where to get [Bravely Default II](game_name).
+    - I'm interested in [Monster Hunter Rise](game_name).
+    - Can you fetch the link for [Shin Megami Tensei V](game_name)?
+    - I want to see [New Pokemon Snap](game_name).
+    - How can I purchase [Miitopia](game_name)?
+    - I'd like the link for [Mario Golf: Super Rush](game_name).
+    - Can you find [The Great Ace Attorney Chronicles](game_name) for me?
+    - I'm looking for [No More Heroes 3](game_name).
+    - Show me [WarioWare: Get It Together!](game_name).
+    - I want to buy [Metroid Dread](game_name).
+    - Can you show me [Super Monkey Ball Banana Mania](game_name)?
+    - I'm interested in [Dying Light 2](game_name).
+    - How about [Halo Infinite](game_name)?
+    - I'd like to see [Fable](game_name).
+    - Can you find [Forza Horizon 5](game_name) for me?
 
 - lookup: game_name
   examples: |
@@ -12064,3 +12172,21 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: about
+  examples: |
+  - Who you are?
+  - Tell me about yourself.
+  - Introduce yourself.
+  - Are you a bot?
+  - What's your name?
+
+- intent: functionalities
+  examples: |
+  - What can you do?
+  - Tell me your capabilities.
+  - What are your functions?
+  - How can you assist me?
+  - What services do you offer?
+  - How can you help?
+  - What's your purpose?

@@ -2,6 +2,32 @@ version: "3.1"
 
 stories:
 
+- story: better games
+  steps:
+  - intent: top_games
+  - action: utter_on_it
+  - action: top_games_query
+
+- story: better games of a genre
+  steps:
+  - intent: top_games_genre
+  - action: utter_on_it
+  - action: top_games_by_genre
+
+- story: get a game link to buy
+  steps:
+  - intent: get_game_link
+  - action: get_link
+
+- story: get synopsis of a game
+  steps:
+  - intent: get_game_synopsis
+  - action: get_synopsis
+
+- story: said thanks
+  steps:
+  - intent: thankful
+  - action: utter_thank_you
 
 - story: happy path
   steps:

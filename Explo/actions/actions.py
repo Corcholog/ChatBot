@@ -11,24 +11,46 @@ import re
 
 consult_path = "consult('C:/Users/logue/OneDrive/Escritorio/ChatBot/Explo/knowledge_db.pl')"
 
-class getGameLink(Action):
+class GetSynopsis(Action):
+    def name(self) -> Text:
+        return "get_synopsis"
+    def run(self, dispatcher: CollectingDispatcher,
+             tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        game_to_search = next(tracker.get_latest_entity_values("game_name"), None)
+        if game_to_search is not None:
+            synopsis = webscrapp.get_game_synopsis(game_to_search)
+            if synopsis is not None:
+                dispatcher.utter_message(text=f"Here you have the synopsis:")
+                dispatcher.utter_message(text=f"{synopsis}")
+            else:
+                dispatcher.utter_message(response="utter_there_is_no_link")
+        else:
+            dispatcher.utter_message(response="utter_there_is_no_link")
+
+class GetGameLink(Action):
     def name(self) -> Text:
         return "get_link"
     def run(self, dispatcher: CollectingDispatcher,
              tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         game_to_search = next(tracker.get_latest_entity_values("game_name"), None)
+        if game_to_search is not None:
+            url = webscrapp.get_game_link(game_to_search)
 
-        url = webscrapp.get_game_link(game_to_search)
-        
-        dispatcher.utter_message(text=f"The link for: {game_to_search} is {url}")
-        
+            if url is not None:
+                dispatcher.utter_message(response="utter_give_link")
+                dispatcher.utter_message(text=f"{url}")
+            else:
+                dispatcher.utter_message(response="utter_there_is_no_link")
+        else:
+            dispatcher.utter_message(response="utter_there_is_no_link")
+
 
 class TopGamesQuery(Action):
     def name(self) -> Text:
         return "top_games_query"
     def run(self, dispatcher: CollectingDispatcher,
              tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        #start_time = time.time()
+        # start_time = time.time()
         with PrologMQI(port=8000) as mqi:
             with mqi.create_thread() as prolog_thread:
                 prolog_thread.query(consult_path) 
@@ -44,9 +66,9 @@ class TopGamesQuery(Action):
                         dispatcher.utter_message(text=f"{formatted_entry}")
                         dispatcher.utter_message(text="\n")
 
-                #end_time = time.time()
-                #elapsed_time = end_time - start_time
-                #dispatcher.utter_message(text=f"Elapsed time inside of the query: {elapsed_time} seconds")
+                # end_time = time.time()
+                # elapsed_time = end_time - start_time
+                # dispatcher.utter_message(text=f"Elapsed time inside of the query: {elapsed_time} seconds")
 
         return []
 

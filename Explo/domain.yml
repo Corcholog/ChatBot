@@ -12,6 +12,8 @@ intents:
   - top_games
   - top_games_genre
   - get_game_link
+  - get_game_synopsis
+  - thankful
 
 entities:
   - genre_type
@@ -49,14 +51,56 @@ responses:
   utter_goodbye:
   - text: "Bye"
 
-  utter_iamabot:
-  - text: "Hello Nigga!"
-  
+  utter_on_it:
+  - text: "I'm on it!"
+  - text: "Just wait a sec"
+  - text: "Give me a sec"
+
+  utter_who_you_are:
+  - text: ""
+
+  utter_functionalities:
+  - text: ""
+
+  utter_thank_you:
+  - text: "You're welcome!"
+  - text: "No worries at all."
+  - text: "Glad to be of assistance!"
+  - text: "Always here for you!"
+  - text: "It's my pleasure to help."
+  - text: "Of course! Let me know if there's anything else."
+  - text: "Happy to be of service!"
+  - text: "Anytime, always here to assist."
+  - text: "You got it! Don't hesitate to ask if you have more questions."
+  - text: "That's what I'm here for!"
+
+  utter_give_link:
+  - text: "Sure! here it is."
+  - text: "Here it is =)"
+  - text: "That game is kinda cool."
+  - text: "Have a good time, but remember to study too!"
+  - text: "Got it! Check this out."
+  - text: "Here's what I found for you."
+  - text: "Enjoy your game!"
+  - text: "This one's popular! Here's the link."
+  - text: "Found it! Take a look."
+  - text: "Here you go. Happy gaming!"
+
+  utter_there_is_no_link:
+    - text: "Sorry, I couldn't find that game."
+    - text: "Hmm, I couldn't locate that game. Are you sure about the title?"
+    - text: "My apologies, I couldn't find a match for that game."
+    - text: "It seems that game isn't available in the database I checked."
+    - text: "I searched high and low, but couldn't find that game. Sorry!"
+    - text: "Unfortunately, I couldn't locate that game. Maybe it's a newer release?"
+    - text: "That game doesn't ring a bell. Could you check the title again?"
+    - text: "I'm having trouble finding that game. Are you sure it's available?"
 
 actions:
   - top_games_query
   - top_games_by_genre
   - get_link
+  - get_synopsis
 
 session_config:
   session_expiration_time: 60
