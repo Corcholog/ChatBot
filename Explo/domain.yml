@@ -13,7 +13,12 @@ intents:
   - get_game_link
   - get_game_synopsis
   - game_news
+  - about
+  - functionalities
   - thankful
+  - likes_game
+  - dislikes_game
+  - predict
 
 entities:
   - genre_type
@@ -56,6 +61,21 @@ responses:
   - text: "Just wait a sec"
   - text: "Give me a sec"
 
+  utter_about:
+  - text: "I'm Cork, i'm here to serve and assist you in anything related to videogames."
+    image: "C:/Users/logue/OneDrive/Escritorio/ChatBot/Explo/src/img/descarga.jpeg"
+
+  utter_functionalities:
+  - text: "I can provide you with the latest game news."
+  - text: "You can ask me for the synopsis or description of a specific game."
+  - text: "I can give you a link to a game you're interested in."
+  - text: "I can list the top 10 games based on their scores."
+  - text: "If you have a favorite genre, I can show you the top 10 games within that genre."
+  - text: "I can provide information, answer questions, and assist with various tasks."
+  - text: "My main capabilities include answering queries, providing recommendations, and guiding users."
+  - text: "I'm designed to help users navigate, provide information, and offer assistance in various areas."
+  - text: "I offer a range of services to make your experience smoother."
+  - text: "My purpose is to assist and make things easier for you."
 
 
   utter_thank_you:
@@ -92,12 +112,20 @@ responses:
     - text: "That game doesn't ring a bell. Could you check the title again?"
     - text: "I'm having trouble finding that game. Are you sure it's available?"
 
+  utter_likes_game:
+    - text: "That's great! I'm glad you like it."
+
+  utter_dislikes_game:
+    - text: "Sorry to hear that you don't like it. Everyone has different tastes!"
+
 actions:
   - top_games_query
   - top_games_by_genre
   - get_link
   - get_synopsis
   - get_news
+  - update_profile
+  - predict_game
 
 session_config:
   session_expiration_time: 60

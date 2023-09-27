@@ -10,6 +10,60 @@ nlu:
     - thanks so much
     - appreciate it
 
+- intent: predict
+  examples: | 
+    - Would I like [Resident Evil 4](game_name)?
+    - Should I try [League of Legends](game_name)?
+
+- intent: likes_game
+  examples: |
+    - I like [Resident Evil 4](game_name).
+    - I love [The Sims](game_name).
+    - I absolutely love [Assassin's Creed](game_name)!
+    - I've always enjoyed playing [World of Warcraft](game_name).
+    - [The Sims](game_name) has always been my favorite.
+    - [Red Dead Redemption](game_name) is so awesome!
+    - I can't get enough of [Overwatch](game_name).
+    - I have a soft spot for [Final Fantasy](game_name).
+    - I'm obsessed with [The Witcher](game_name).
+    - [Metal Gear Solid 2: Sons of Liberty](game_name) is the best game I've ever played.
+    - I spend hours playing [Rocket League](game_name).
+    - [Metal Gear Solid](game_name) is my go-to game.
+    - [Resident Evil 2](game_name) is just brilliant, I love it.
+    - [Mortal Kombat](game_name) has always been my top choice.
+    - I find [Animal Crossing](game_name) super enjoyable.
+    - [Among Us](game_name) is so much fun with friends.
+    - [Fall Guys](game_name) makes me so happy.
+    - [Stardew Valley](game_name) is my relaxing game.
+    - I have a blast playing [Battlefield](game_name).
+    - [League of Legends](game_name) is my all-time favorite.
+    - I really dig [Mass Effect](game_name).
+    - [God of War](game_name) is an epic game, I adore it.
+
+- intent: dislikes_game
+  examples: |
+    - I hate [Minecraft](game_name).
+    - I never really liked [Assassin's Creed](game_name).
+    - [World of Warcraft](game_name) is just not for me.
+    - I couldn't get into [The Sims](game_name).
+    - I'm not a fan of [Red Dead Redemption](game_name).
+    - I didn't enjoy [Overwatch](game_name) as much as others did.
+    - [Final Fantasy](game_name) isn't my kind of game.
+    - I didn't like the storyline of [The Witcher](game_name).
+    - [Chrono Trigger](game_name) was a bit overhyped, in my opinion.
+    - [Rocket League](game_name) just frustrates me.
+    - I'm not big on sports games like [Bloodborne](game_name).
+    - [Devil May Cry 3](game_name) is too slow-paced for me.
+    - I think [Mortal Kombat](game_name) is too violent.
+    - I got bored with [Animal Crossing](game_name).
+    - [Among Us](game_name) is overrated.
+    - I didn't find [Fall Guys](game_name) amusing.
+    - [Stardew Valley](game_name) feels tedious to me.
+    - [Battlefield](game_name) is not my type of shooter.
+    - I prefer other MOBAs over [League of Legends](game_name).
+    - [Mass Effect](game_name) was a disappointment.
+    - I can't get into the [God of War](game_name) series.
+
 - intent: get_game_synopsis
   examples: |
     - What is [The Legend of Zelda: Ocarina of Time](game_name) about?
@@ -27,7 +81,6 @@ nlu:
     - What events unfold in [God of War](game_name)?
     - Can you give me a brief about [Detroit: Become Human](game_name)?
     - I'd like to understand the narrative of [Assassin's Creed Odyssey](game_name). Can you explain?
-
 
 - intent: get_game_link
   examples: |
@@ -11882,7 +11935,6 @@ nlu:
     - Yaris
     - Family Party: 30 Great Games Obstacle Arcade
 
-
 - intent: top_games_genre
   examples: |
     - show me the top games of [Strategy](genre_type)
@@ -11901,7 +11953,6 @@ nlu:
     - show me the top games of [Motorcycle](genre_type)  
     - show me the top games of [WWII](genre_type)  
     - show me the best games of [Role-Playing](genre_type)  
-
 
 - lookup: genre_type
   examples: |

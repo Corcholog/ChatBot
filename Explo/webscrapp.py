@@ -12,6 +12,7 @@ def get_game_link(game_name_og : str) -> str:
 
     html_text = requests.get(url).text # obtengo el html como string
     soup = BeautifulSoup(html_text, 'html.parser')
+    img = soup.find_all("div", {"id": {"highlight_strip"}})
     link = soup.find("a", {"class": "search_result_row ds_collapse_flag"})
     if link is not None:
         return link.get("href")
@@ -57,3 +58,27 @@ def eng_news() -> str:
             news.append(art2.find("h5", {"class": "display-card-title"}).get_text().strip())
         return news
     return url
+
+def get_first_image_from_google(query):
+    # Define the URL and headers
+    query = query.lower()
+    query = query.replace(" ", "+")
+    url = "https://duckduckgo.com/?t=h_&q="+ query + "&iax=images&ia=images"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    }
+    
+    # Make the request
+    response = requests.get(url, headers=headers)
+    
+    # Parse the response with BeautifulSoup
+    soup = BeautifulSoup(response.text, 'html.parser')
+    
+    # Find the first image
+    img_tag = soup.find("img")
+    
+    # Return the image URL
+    if img_tag:
+        return img_tag["src"]
+    else:
+        return None

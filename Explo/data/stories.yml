@@ -5,13 +5,11 @@ stories:
 - story: better games
   steps:
   - intent: top_games
-  - action: utter_on_it
   - action: top_games_query
 
 - story: better games of a genre
   steps:
   - intent: top_games_genre
-  - action: utter_on_it
   - action: top_games_by_genre
 
 - story: get a game link to buy
@@ -28,6 +26,31 @@ stories:
   steps:
   - intent: game_news
   - action: get_news
+
+- story: predicts a game
+  steps:
+  - intent: predict
+  - action: predict_game
+
+- story: likes a game
+  steps:
+  - intent: likes_game
+  - action: update_profile
+
+- story: dislikes a game
+  steps:
+  - intent: dislikes_game
+  - action: update_profile
+
+- story: asked for Cork
+  steps:
+  - intent: about
+  - action: utter_about
+
+- story: asked for functionalities
+  steps:
+  - intent: functionalities
+  - action: utter_functionalities
 
 - story: said thanks
   steps:
