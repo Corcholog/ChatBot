@@ -6,6 +6,7 @@ from swiplserver import PrologMQI
 from sklearn.tree import DecisionTreeClassifier
 from sklearn import tree
 from sklearn.preprocessing import MultiLabelBinarizer
+import graphviz
 import pandas as pd
 import time
 import webscrapp
@@ -27,7 +28,10 @@ consult_path = "consult('C:/Users/logue/OneDrive/Escritorio/ChatBot/Explo/knowle
 
 # Decission Tree Model Initialization
 df = pd.read_csv('C:/Users/logue/OneDrive/Escritorio/ChatBot/Explo/UserProfile/gamesInfo.csv')
+
+processed_games = set(df['game'])
 df = df.drop('game', axis='columns')
+
 
 # separate genre list in columns for each genre
 df['genres'] = df['genres'].str.split(',')
@@ -51,8 +55,6 @@ df = df.drop(columns=['developer'])
 
 # onehot encode
 df = pd.get_dummies(data=df, drop_first=True)
-
-
 
 x = df.drop('likes', axis='columns') # Features
 y = df['likes'] # Target
@@ -145,26 +147,29 @@ class UpdateProfile(Action):
     def run(self, dispatcher: CollectingDispatcher,
              tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         game_name = next(tracker.get_latest_entity_values("game_name"), None)
-        if game_name is not None:
-            last_intent = tracker.get_intent_of_latest_message()
-            if last_intent == "likes_game":
-                addGame(game_name,1)
-                dispatcher.utter_message(response="utter_likes_game")
 
-            elif last_intent == "dislikes_game":
-                addGame(game_name,0)
-                dispatcher.utter_message(response="utter_dislikes_game")
+        if game_name is not None:
+            if not game_name in processed_games:
+                last_intent = tracker.get_intent_of_latest_message()
+                processed_games.add(game_name)
+                if last_intent == "likes_game":
+                    addGame(game_name,1)
+                    dispatcher.utter_message(response="utter_likes_game")
+
+                elif last_intent == "dislikes_game":
+                    addGame(game_name,0)
+                    dispatcher.utter_message(response="utter_dislikes_game")
+            else: # TO-DO: Check if intent = likes_game AND game was disliked, change that value. Same or intent dislikes and game was liked (update user taste)
+                dispatcher.utter_message("We already knew owo")
             
         else:
             dispatcher.utter_message("I didn't understand which game you like")
-
 
 class GetNews(Action):
     def name(self) -> Text:
         return "get_news"
     def run(self, dispatcher: CollectingDispatcher,
              tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
         news = webscrapp.eng_news()
         if (len(news) == 0) or (news is None):
             news = webscrapp.esp_news()
@@ -201,7 +206,6 @@ class GetGameLink(Action):
         game_to_search = next(tracker.get_latest_entity_values("game_name"), None)
         if game_to_search is not None:
             url = webscrapp.get_game_link(game_to_search)
-
             if url is not None:
                 dispatcher.utter_message(response="utter_give_link")
                 dispatcher.utter_message(text=f"{url}")
@@ -222,17 +226,14 @@ class TopGames(Action):
                 N = 10
                 response = prolog_thread.query(f"top_10_ranking(Top10, {N})")
                 dispatcher.utter_message(text=f"The top 10 games by score are:")
-
                 for entry in response:
                     for game_info in entry['Top10']:
                         game_name, score = game_info
                         formatted_entry = f"{game_name}, score: {score}"
                         dispatcher.utter_message(text=f"{formatted_entry}")
-
                 # end_time = time.time()
                 # elapsed_time = end_time - start_time
                 # dispatcher.utter_message(text=f"Elapsed time inside of the query: {elapsed_time} seconds")
-
         return []
 
 class TopGamesByGenre(Action): 
@@ -248,8 +249,7 @@ class TopGamesByGenre(Action):
             fetch_games = "SELECT GAME.name, MAX(GAME.score) as maxscore FROM GAME join HAS_GENRE on GAME.name = HAS_GENRE.game_name join GENRE ON HAS_GENRE.genre_id = GENRE.genre_id WHERE GENRE.genre_name = %s GROUP BY name, score ORDER BY score DESC LIMIT 10"
             cur.execute(fetch_games, (genre,))
             result = cur.fetchall()
-            dispatcher.utter_message(text=f"The top 10 games of {genre} are:")
-            
+            dispatcher.utter_message(text=f"The top 10 games of {genre} are:")    
             for row in result:
                 dispatcher.utter_message(text=f"{row[0]} with a score of: {row[1]}")
             conn.commit()
@@ -263,7 +263,7 @@ class TopGamesByGenre(Action):
         #dispatcher.utter_message(text=f"Elapsed time of Action: {elapsed_time} seconds")
         return []
 
-'''     
+'''     PROLOG VERSION
 class TopGamesByGenre(Action): 
     def name(self) -> Text:
         return "top_games_by_genre"
@@ -295,4 +295,15 @@ class TopGamesByGenre(Action):
         elapsed_time = end_time - start_time
         dispatcher.utter_message(text=f"Elapsed time inside of the query: {elapsed_time} seconds")
         return []
+'''
+'''
+dot_data = tree.export_graphviz(model, out_file=None, 
+                        feature_names=x.columns.tolist(), 
+                        class_names=df['likes'].astype(str).unique().tolist(),
+                        filled=True, rounded=True, 
+                        special_characters=True)
+
+graph = graphviz.Source(dot_data)
+graph.render("arbolPreview")
+
 '''

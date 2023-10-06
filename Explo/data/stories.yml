@@ -7,6 +7,11 @@ stories:
   - intent: top_games
   - action: top_games_query
 
+- story: fkc iceber
+  steps:
+  - intent: fake_clan
+  - action: utter_fake_clan
+
 - story: better games of a genre
   steps:
   - intent: top_games_genre

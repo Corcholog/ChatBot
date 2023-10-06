@@ -10,6 +10,25 @@ nlu:
     - thanks so much
     - appreciate it
 
+- intent: fake_clan
+  examples:  |
+    - soporequetepanchu
+    - joshy
+    - poshy
+    - panchu
+    - ponchu
+    - pachu
+    - gauci
+    - gauso
+    - splaca
+    - slaca
+    - El H
+    - hernyan
+    - JJ
+    - julia joshy
+    - nubecita
+    - bruno ch the king
+
 - intent: predict
   examples: | 
     - Would I like [Resident Evil 4](game_name)?
