@@ -32,7 +32,6 @@ df = pd.read_csv('C:/Users/logue/OneDrive/Escritorio/ChatBot/Explo/UserProfile/g
 processed_games = set(df['game'])
 df = df.drop('game', axis='columns')
 
-
 # separate genre list in columns for each genre
 df['genres'] = df['genres'].str.split(',')
 df['developer'] = df['developer'].str.split(',')

@@ -5,7 +5,7 @@ from sklearn import tree
 from sklearn.preprocessing import MultiLabelBinarizer
 
 df = pd.read_csv('C:/Users/logue/OneDrive/Escritorio/ChatBot/Explo/Recommendation/train_data.csv')
-#print(df)
+print(df)
 
 df = df.drop('game', axis='columns')
 
@@ -29,6 +29,7 @@ df = pd.concat([df, devs_df], axis=1)
 # erase the original genres and developer columns
 df = df.drop(columns=['genres'])
 df = df.drop(columns=['developer'])
+print(df) 
 
 # onehot encode
 df = pd.get_dummies(data=df, drop_first=True)
@@ -88,8 +89,6 @@ for feature in df_testing.columns:
 df_testing = df_testing[training_features]
 result = model.predict(df_testing)
 print(model.predict(df_testing)) 
-
-
 
 dot_data = tree.export_graphviz(model, out_file=None, 
                         feature_names=x.columns.tolist(), 
