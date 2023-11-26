@@ -19,7 +19,6 @@ intents:
   - likes_game
   - dislikes_game
   - predict
-  - fake_clan
 
 entities:
   - genre_type
@@ -64,10 +63,6 @@ responses:
 
   utter_about:
   - text: "I'm Cork, i'm here to serve and assist you in anything related to videogames."
-
-  utter_fake_clan:
-  - text: "This is the Fake Clan's iceberg"
-    image: "https://imgur.com/ADdzYLo" 
 
   utter_functionalities:
   - text: "I can provide you with the latest game news."
@@ -130,6 +125,7 @@ actions:
   - get_news
   - update_profile
   - predict_game
+  - session_start
 
 session_config:
   session_expiration_time: 60

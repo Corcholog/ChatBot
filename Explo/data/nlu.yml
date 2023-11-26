@@ -10,24 +10,6 @@ nlu:
     - thanks so much
     - appreciate it
 
-- intent: fake_clan
-  examples:  |
-    - soporequetepanchu
-    - joshy
-    - poshy
-    - panchu
-    - ponchu
-    - pachu
-    - gauci
-    - gauso
-    - splaca
-    - slaca
-    - El H
-    - hernyan
-    - JJ
-    - julia joshy
-    - nubecita
-    - bruno ch the king
 
 - intent: predict
   examples: | 
@@ -12154,6 +12136,30 @@ nlu:
     - show me top games
     - which are the better games?
 
+- intent: game_news
+  examples: |
+    - tell me the news
+    - can you give me gaming news?
+    - give me gaming news
+
+- intent: about
+  examples: |
+    - Who you are?
+    - Tell me about yourself.
+    - Introduce yourself.
+    - Are you a bot?
+    - What's your name?
+
+- intent: functionalities
+  examples: |
+    - What can you do?
+    - Tell me your capabilities.
+    - What are your functions?
+    - How can you assist me?
+    - What services do you offer?
+    - How can you help?
+    - What's your purpose?
+
 - intent: greet
   examples: |
     - hey
@@ -12242,27 +12248,3 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-
-- intent: game_news
-  examples: |
-    - tell me the news
-    - can you give me gaming news?
-    - give me gaming news
-
-- intent: about
-  examples: |
-    - Who you are?
-    - Tell me about yourself.
-    - Introduce yourself.
-    - Are you a bot?
-    - What's your name?
-
-- intent: functionalities
-  examples: |
-    - What can you do?
-    - Tell me your capabilities.
-    - What are your functions?
-    - How can you assist me?
-    - What services do you offer?
-    - How can you help?
-    - What's your purpose?

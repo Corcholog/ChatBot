@@ -2,15 +2,16 @@ version: "3.1"
 
 stories:
 
+- story: Session start
+  steps:
+  - intent: greet
+  - action: session_start
+  - action: utter_greet
+
 - story: better games
   steps:
   - intent: top_games
   - action: top_games_query
-
-- story: fkc iceber
-  steps:
-  - intent: fake_clan
-  - action: utter_fake_clan
 
 - story: better games of a genre
   steps:
@@ -61,30 +62,3 @@ stories:
   steps:
   - intent: thankful
   - action: utter_thank_you
-
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye

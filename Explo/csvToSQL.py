@@ -32,7 +32,7 @@ class Game:
     def __str__(self):
         return f"{self.name}, {self.platform}, {self.release_date}, {self.score}, {self.u_score}, {self.developer}, {self.genre}, {self.players}, {self.critics}, {self.users}"
     
-filename = 'C:/Users/logue/OneDrive/Escritorio/ChatBot/Explo/games-data.csv'
+filename = 'C:/Users/Julian/Desktop/cork/games-data.csv'
 
 fields = []
 rows = []

@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load the CSV into a Pandas DataFrame
-df = pd.read_csv('C:/Users/logue/OneDrive/Escritorio/ChatBot/Explo/games-data.csv')
+df = pd.read_csv('C:/Users/Julian/Desktop/cork/games-data.csv')
 
 # Analyze each column
 for column in df.columns:

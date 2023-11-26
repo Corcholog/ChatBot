@@ -9,7 +9,7 @@ params = {
     'port': '5432'  # default port for PostgreSQL
 }
 
-def addGame(game_name: str, likes: int):
+def addGame(game_name: str, likes: int, user_path: str):
     conn = psycopg2.connect(**params)
     cur = conn.cursor()
     game_info = "SELECT ge.genre_name, d.dev_name, g.score FROM GAME g JOIN WAS_DEV wd ON g.name = wd.game_name JOIN DEVELOPER d on wd.dev_id = d.dev_id JOIN HAS_GENRE hg on wd.game_name = hg.game_name JOIN GENRE ge on ge.genre_id = hg.genre_id WHERE g.name = %s"
@@ -26,7 +26,7 @@ def addGame(game_name: str, likes: int):
             devs.add(row[1])
         str_genres = ','.join(genres)
         str_devs = ','.join(devs)
-        with open("C:/Users/logue/OneDrive/Escritorio/ChatBot/Explo/UserProfile/gamesInfo.csv", 'a') as file:
+        with open(user_path, 'a') as file:
             file.write(f'\n{game_name},\"{str_genres}\",\"{str_devs}\",{score},{likes}')
 
     conn.commit()
